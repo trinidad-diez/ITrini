@@ -1,0 +1,45 @@
+
+/* ℭ𝔬𝔩𝔬𝔯𝔰 */
+
+:root {
+  /* Base colors */
+  --base-1: #3F384C; /* deep violet-gray */
+  --base-2: #231C2F; /* very dark purple */
+
+  /* Base-1 light variants */
+  --base-1-light-1: #5A5369;
+  --base-1-light-2: #756E86;
+
+  /* Base-1 dark variants */
+  --base-1-dark-1: #2F293B;
+  --base-1-dark-2: #1F1A27;
+
+  /* Base-2 light variants */
+  --base-2-light-1: #3A3348;
+  --base-2-light-2: #594F6B;
+
+  /* Base-2 dark variants */
+  --base-2-dark-1: #171423;
+  --base-2-dark-2: #0E0C14;
+
+  /* Accent colors */
+  --accent-1: #6C4F8A; /* purple accent */
+  --accent-2: #A58BC4; /* soft lavender */
+
+  /* Neutral colors */
+  --neutral-100: #E7E4EE; /* light background */
+  --neutral-200: #D0CCD7;
+  --neutral-800: #18161F; /* dark neutral */
+
+  /* Supporting / complementary colors */
+  --support-1: #4C3F38; /* muted brown */
+  --support-2: #384C3F; /* dark green-gray */
+
+  /* Text colors */
+  --text-on-dark: #F7F6FA; /* light text on dark backgrounds */
+  --text-on-light: #151318; /* dark text on light backgrounds */
+
+  /* Interaction states */
+  --accent-active: rgba(108, 79, 138, 0.85);
+  --muted: #9B95A6;
+}
