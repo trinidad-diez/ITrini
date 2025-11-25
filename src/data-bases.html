@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ITrini - databases</title>
+</head>
+
+<body>
+    <main>
+        <section>
+            <h2>Structured Query Language</h2>
+            <!--DML-->
+            <article>
+                <h3>Data Modification Language</h3>
+                <p>Used to query, edit, add and delete row-level data from database tables or views.</p>
+                <div>
+                    <h4>SELECT</h4>
+                    <code>SELECT [DISTINCT] * | expression [AS alias][,...]
+                            FROM table_name
+                            [WHERE conditions]
+                            [GROUP BY column_name, ...]
+                            [HAVING conditions]
+                            [ORDER BY column_name [ASC | DESC], ...];
+                    </code>
+                    <ul>
+                        <li>
+                            Select all information from a table:
+                            <code>SELECT * FROM table_name;</code>
+                        </li>
+                        <li>
+                            Select specific columns from a table:
+                            <code>SELECT column1, column2 FROM table_name;</code>
+                        </li>
+                        <li>
+                            Select rows that meet a specific condition:
+                            <code>SELECT * FROM table_name WHERE condition;</code>
+                        </li>
+                        <li>
+                            Select rows and group them by a specific column:
+                            <code>SELECT column_name, COUNT(*) FROM table_name GROUP BY column_name;</code>
+                        </li>
+                        <li>
+                            Select rows and sort them by a specific column:
+                            <code>SELECT * FROM table_name ORDER BY column_name ASC | DESC;</code>
+                        </li>
+                        <li>
+                            NULL behavior in operations:
+                            <code>NULL</code> is a data type (neither zero nor space)
+                        </li>
+                        <li>
+                            Defining aliases for columns shown in the SELECT:
+                            <code>AS</code>
+                        </li>
+                        <li>
+                            Concatenation of columns and literals: concatenate with
+                            <code>||</code> and literals with single quotes <code>' '</code>
+                        </li>
+                        <li>
+                            Including special characters using escape format:
+                            <code>E''</code>
+                        </li>
+                        <li>
+                            Avoid duplicate records:
+                            <code>DISTINCT</code>
+                        </li>
+                        <li>
+                            Limit/filter the number of records returned by a query, defining conditions with:
+                            <code>WHERE</code>
+                        </li>
+                        <li>
+                            Comparison operators:
+                            <code>=</code>, <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>,
+                            <code>&lt;=</code>, <code>BETWEEN</code>, <code>IN</code>, <code>LIKE</code>,
+                            <code>ILIKE</code>, <code>IS NULL</code>
+                        </li>
+                        <li>
+                            Defining search patterns with operators:
+                            <code>%</code>, <code>_</code>
+                        </li>
+                        <li>
+                            Logical operators:
+                            <code>AND</code>, <code>OR</code>, <code>NOT</code>
+                        </li>
+                        <li>
+                            Operator precedence rules
+                        </li>
+                        <li>
+                            Sort records by columns:
+                            <code>ORDER BY</code>, <code>ASC</code>, <code>DESC</code>
+                            <ul>
+                                <li>Sorting by one or more columns</li>
+                                <li>Sorting by columns and by alias.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Content from material 3-select.pdf
+                            <ul>
+                                <li>
+                                    String manipulation functions:
+                                    <code>lower()</code>, <code>upper()</code>, <code>initcap()</code>
+                                </li>
+                                <li>
+                                    Other string functions:
+                                    <code>substring()</code>, <code>substr()</code>, <code>length()</code>, <code>strpos()</code>, <code>repeat()</code>, <code>replace()</code>, <code>trim()</code>, ...
+                                </li>
+                                <li>
+                                    Numeric functions:
+                                    <code>round()</code>, <code>trunc()</code>, <code>mod()</code>
+                                </li>
+                                <li>
+                                    Date operations and functions:
+                                    <code>current_date</code>, <code>current_time</code>, ...
+                                </li>
+                                <li>
+                                    Casting or conversions between data types (implicit or explicit):
+                                    <code>cast()</code>, <code>to_char()</code>, <code>to_date()</code>, <code>to_number()</code>
+                                </li>
+                                <li>
+                                    Nesting functions.
+                                </li>
+                                <li>
+                                    Conditional expressions:
+                                    <code>coalesce()</code>, <code>CASE</code>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            Aggregation functions:
+                            <code>AVG()</code>, <code>COUNT()</code>, <code>MAX()</code>, <code>MIN()</code>, <code>SUM()</code>
+                        </li>
+                        <li>
+                            Ignore duplicate values with
+                            <code>DISTINCT</code>
+                        </li>
+                        <li>
+                            <code>GROUP BY</code> clause
+                        </li>
+                        <li>
+                            <code>HAVING</code> clause
+                        </li>
+                        <li>
+                            Joining tables with JOIN:
+                            <ul>
+                                <li>
+                                    <strong>JOIN</strong> combines rows from two or more tables in a query, based on a specific condition.
+                                    <ul>
+                                        <li>If no condition is specified, a Cartesian product is returned.</li>
+                                        <li>Types of JOIN:
+                                            <ul>
+                                                <li><strong>INNER JOIN</strong>: Returns rows that satisfy the ON condition.</li>
+                                                <li><strong>LEFT OUTER JOIN</strong>: Returns all rows from the left table, and matching rows from the right table.</li>
+                                                <li><strong>RIGHT OUTER JOIN</strong>: Returns all rows from the right table, and matching rows from the left table.</li>
+                                                <li><strong>FULL OUTER JOIN</strong>: Returns all rows from both tables, with matches where available.</li>
+                                                <li><strong>NATURAL JOIN</strong>: Joins tables based on columns with the same name and type, keeping only one copy of each common column.</li>
+                                                <li><strong>CROSS JOIN</strong>: Returns the Cartesian product of both tables.</li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <strong>USING vs ON</strong>:
+                                            <ul>
+                                                <li><strong>USING</strong>: Used when column names are identical; only one column is included in the result.</li>
+                                                <li><strong>ON</strong>: Used for explicit join conditions; both columns are included in the result.</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <strong>Subqueries</strong>:
+                                    <ul>
+                                        <li>A subquery is a SELECT statement nested inside another query, enclosed in parentheses.</li>
+                                        <li>Can be used in SELECT, INSERT, DELETE, UPDATE, CREATE TABLE AS, and more.</li>
+                                        <li>Types:
+                                            <ul>
+                                                <li><strong>Scalar subquery</strong>: Returns a single value.</li>
+                                                <li><strong>Multi-row subquery</strong>: Returns multiple values, used with IN, ANY, ALL, NOT.</li>
+                                                <li><strong>Correlated subquery</strong>: References columns from the outer query and is evaluated for each row.</li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <strong>EXISTS / NOT EXISTS</strong>: Checks if a subquery returns any rows (returns TRUE/FALSE).
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <strong>Set operators</strong>:
+                                    <ul>
+                                        <li><strong>UNION</strong>: Combines results from multiple queries, removing duplicates.</li>
+                                        <li><strong>UNION ALL</strong>: Combines results, including duplicates.</li>
+                                        <li><strong>INTERSECT</strong>: Returns only rows present in both queries.</li>
+                                        <li><strong>EXCEPT</strong>: Returns rows from the first query not present in the second.</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <strong>Window functions</strong>:
+                                    <ul>
+                                        <li>Perform calculations across a set of rows related to the current row, without collapsing rows.</li>
+                                        <li>Categories:
+                                            <ul>
+                                                <li>Aggregation: <code>MAX()</code>, <code>MIN()</code>, <code>AVG()</code>, <code>SUM()</code>, <code>COUNT()</code></li>
+                                                <li>Ranking: <code>ROW_NUMBER()</code>, <code>RANK()</code>, <code>DENSE_RANK()</code></li>
+                                                <li>Analytic: <code>LEAD()</code>, <code>LAG()</code>, <code>FIRST_VALUE()</code>, <code>LAST_VALUE()</code>, <code>NTH_VALUE()</code>, <code>NTILE()</code></li>
+                                                <li>Distribution: <code>PERCENT_RANK()</code>, <code>CUME_DIST()</code></li>
+                                            </ul>
+                                        </li>
+                                        <li>Syntax: <code>window_function(args) OVER ([PARTITION BY ...] [ORDER BY ...])</code></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <strong>Common Table Expressions (CTE)</strong>:
+                                    <ul>
+                                        <li>Use <code>WITH</code> to define named subqueries for better readability and structure.</li>
+                                        <li>Syntax: <code>WITH subquery_name AS (SELECT ...)</code></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <strong>Conditional expressions</strong>:
+                                    <ul>
+                                        <li>
+                                            <strong>CASE</strong>: Implements conditional logic in queries.
+                                            <ul>
+                                                <li>Syntax: <code>CASE WHEN condition THEN result ... ELSE result END</code></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <strong>COALESCE</strong>: Returns the first non-null argument.
+                                            <ul>
+                                                <li>Syntax: <code>COALESCE(exp1, exp2, ...)</code></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <strong>NULLIF</strong>: Returns NULL if two expressions are equal, otherwise returns the first expression.
+                                            <ul>
+                                                <li>Syntax: <code>NULLIF(exp1, exp2)</code></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <aside>
+                        <h5>Note:</h5>
+                        <ul>
+                            <li>SQL keywords are not case-sensitive, but it is a common convention to write them in
+                                uppercase for better readability.</li>
+                            <li>Semicolons (;) are used to terminate SQL statements, especially when executing multiple
+                                statements in a single batch.</li>
+                            <li>SQL comments can be added using double hyphens (--) for single-line comments or /* */
+                                for multi-line comments.</li>
+                            <li>Whitespace (spaces, tabs, and newlines) is generally ignored in SQL statements, allowing
+                                for flexible formatting.</li>
+                            <li>Functions and operators are not the same: functions perform operations on values and
+                                return results, while operators manipulate values directly within expressions.</li>
+                            <li>SQL is a declarative language: you specify what you want, not how to get it.</li>
+                            <li>Most SQL implementations have vendor-specific extensions and differences.</li>
+                            <li>SQL injection is a common security risk—always validate and sanitize user input.</li>
+                            <li>Indexes can improve query performance but may slow down write operations.</li>
+                            <li>Transactions allow you to group multiple operations into a single unit of work.</li>
+                        </ul>
+                    </aside>
+                </div>
+                <div>
+                    <h4>UPDATE</h4>
+                </div>
+                <div>
+                    <h4>INSERT</h4>
+                </div>
+                <div>
+                    <h4>DELETE</h4>
+                </div>
+            </article>
+
+            <!--DQL-->
+            <article>
+                <h3>Data Query Language</h3>
+                <p>Allows you to get and organise data from a database.</p>
+                <div>
+                    <h4>SELECT</h4>
+                </div>
+            </article>
+
+            <!--DDL-->
+            <article>
+                <h3>Data Definition Language</h3>
+                <p>Describing data and its relationships.</p>
+                <div>
+                    <h4>CREATE</h4>
+                </div>
+                <div>
+                    <h4>ALTER</h4>
+                </div>
+                <div>
+                    <h4>DROP TABLE</h4>
+                </div>
+            </article>
+
+            <!--DCL-->
+            <article>
+                <h3>Data Control Language</h3>
+                <p>Manages users and roles.</p>
+            </article>
+            <article>
+                <h3>PL</h3>
+                <p>Programming</p>
+            </article>
+        </section>
+    </main>
+</body>
+
+</html>
